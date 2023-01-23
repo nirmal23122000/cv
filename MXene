@@ -1,0 +1,604 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "mount_file_id": "1-RpOgHLzUC-6bNo_E5xbj4QaB6RdBrLq",
+      "authorship_tag": "ABX9TyNfNdVa3JeFVAJmLbuZcJmL",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/nirmal23122000/cv/blob/main/MXene\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "id": "UCWYzaeuWvPI"
+      },
+      "outputs": [],
+      "source": [
+        "import pandas as pd"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df=pd.read_csv('/content/drive/MyDrive/ANANT_MXENE_REGARDINGS/OPERATION_ANANT_N_FILTERED/anant_mxene_raw.csv')"
+      ],
+      "metadata": {
+        "id": "mliVSNtsXvkx"
+      },
+      "execution_count": 2,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 424
+        },
+        "id": "8X_Oz2oyYRlh",
+        "outputId": "1647f122-59be-4399-f156-7c19ddb6d445"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "              mxene_name  lattice_constant band_gap is_metal  magnetic_moment\n",
+              "0        Cr-Cr-C-Cl-OH\\t             3.155   \\t 0.0   \\tTrue           3.7021\n",
+              "1        Cr-Cr-C-CN-Br\\t             3.180   \\t 0.0   \\tTrue           3.1953\n",
+              "2        Cr-Cr-C-CN-Cl\\t             3.144   \\t 0.0   \\tTrue           3.2888\n",
+              "3        Cr-Cr-C-CN-CN\\t             3.112   \\t 0.0   \\tTrue           3.3409\n",
+              "4         Cr-Cr-C-CN-F\\t             3.220   \\t 0.0   \\tTrue           5.9863\n",
+              "...                  ...               ...      ...      ...              ...\n",
+              "23852     Zr-Nb-C-H-OH\\t             3.250   \\t 0.0   \\tTrue           0.0291\n",
+              "23853    Zr-Nb-N-Br-OH\\t             3.424   \\t 0.0   \\tTrue           0.1071\n",
+              "23854   Zr-Ti-C-NCS-Br\\t             3.382   \\t 0.0   \\tTrue           0.0017\n",
+              "23855  Zr-Ti-C-OCl-NCO\\t             3.237   \\t 0.0   \\tTrue           1.5680\n",
+              "23856  Zr-Ti-C-OCl-NCS\\t             3.267   \\t 0.0   \\tTrue          -1.0742\n",
+              "\n",
+              "[23857 rows x 5 columns]"
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-595325fd-5ee4-4961-aa8a-adf260539c7f\">\n",
+              "    <div class=\"colab-df-container\">\n",
+              "      <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>mxene_name</th>\n",
+              "      <th>lattice_constant</th>\n",
+              "      <th>band_gap</th>\n",
+              "      <th>is_metal</th>\n",
+              "      <th>magnetic_moment</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>Cr-Cr-C-Cl-OH\\t</td>\n",
+              "      <td>3.155</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>3.7021</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>Cr-Cr-C-CN-Br\\t</td>\n",
+              "      <td>3.180</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>3.1953</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>Cr-Cr-C-CN-Cl\\t</td>\n",
+              "      <td>3.144</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>3.2888</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>Cr-Cr-C-CN-CN\\t</td>\n",
+              "      <td>3.112</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>3.3409</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>Cr-Cr-C-CN-F\\t</td>\n",
+              "      <td>3.220</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>5.9863</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>...</th>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "      <td>...</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>23852</th>\n",
+              "      <td>Zr-Nb-C-H-OH\\t</td>\n",
+              "      <td>3.250</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>0.0291</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>23853</th>\n",
+              "      <td>Zr-Nb-N-Br-OH\\t</td>\n",
+              "      <td>3.424</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>0.1071</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>23854</th>\n",
+              "      <td>Zr-Ti-C-NCS-Br\\t</td>\n",
+              "      <td>3.382</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>0.0017</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>23855</th>\n",
+              "      <td>Zr-Ti-C-OCl-NCO\\t</td>\n",
+              "      <td>3.237</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>1.5680</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>23856</th>\n",
+              "      <td>Zr-Ti-C-OCl-NCS\\t</td>\n",
+              "      <td>3.267</td>\n",
+              "      <td>\\t 0.0</td>\n",
+              "      <td>\\tTrue</td>\n",
+              "      <td>-1.0742</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "<p>23857 rows × 5 columns</p>\n",
+              "</div>\n",
+              "      <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-595325fd-5ee4-4961-aa8a-adf260539c7f')\"\n",
+              "              title=\"Convert this dataframe to an interactive table.\"\n",
+              "              style=\"display:none;\">\n",
+              "        \n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M0 0h24v24H0V0z\" fill=\"none\"/>\n",
+              "    <path d=\"M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z\"/><path d=\"M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z\"/>\n",
+              "  </svg>\n",
+              "      </button>\n",
+              "      \n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      flex-wrap:wrap;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "      <script>\n",
+              "        const buttonEl =\n",
+              "          document.querySelector('#df-595325fd-5ee4-4961-aa8a-adf260539c7f button.colab-df-convert');\n",
+              "        buttonEl.style.display =\n",
+              "          google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "        async function convertToInteractive(key) {\n",
+              "          const element = document.querySelector('#df-595325fd-5ee4-4961-aa8a-adf260539c7f');\n",
+              "          const dataTable =\n",
+              "            await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                     [key], {});\n",
+              "          if (!dataTable) return;\n",
+              "\n",
+              "          const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "            '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "            + ' to learn more about interactive tables.';\n",
+              "          element.innerHTML = '';\n",
+              "          dataTable['output_type'] = 'display_data';\n",
+              "          await google.colab.output.renderOutput(dataTable, element);\n",
+              "          const docLink = document.createElement('div');\n",
+              "          docLink.innerHTML = docLinkHtml;\n",
+              "          element.appendChild(docLink);\n",
+              "        }\n",
+              "      </script>\n",
+              "    </div>\n",
+              "  </div>\n",
+              "  "
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df.columns"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZyBULRl6cZ0B",
+        "outputId": "13f36d3b-7f9c-4dfb-e81a-1e5918d60e8a"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "Index(['mxene_name', 'lattice_constant', 'band_gap', 'is_metal',\n",
+              "       'magnetic_moment'],\n",
+              "      dtype='object')"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 4
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "df.mxene_name.unique()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "YqDXofcdceCy",
+        "outputId": "4cfa8a7e-c3fe-4299-9316-e1300b1f7c0b"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array(['Cr-Cr-C-Cl-OH\\t', 'Cr-Cr-C-CN-Br\\t', 'Cr-Cr-C-CN-Cl\\t', ...,\n",
+              "       'Zr-Ti-C-NCS-Br\\t', 'Zr-Ti-C-OCl-NCO\\t', 'Zr-Ti-C-OCl-NCS\\t'],\n",
+              "      dtype=object)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "type(True)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Ug9xHXCTdXoA",
+        "outputId": "0ae36d57-b004-4153-8939-9f7f3dea67cd"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "bool"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "type(False)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "RLSfsHE4dd-C",
+        "outputId": "4823239b-6320-430d-e93b-6639a782d4a6"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "bool"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 7
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Code to filter specific repeated term or word in a csv file, as we need to filter only \"N\" i.e Nitride based MXene."
+      ],
+      "metadata": {
+        "id": "lEtMJ8W3Q_5e"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "dFilter=df.loc[df['mxene_name'].str.contains('-N-')]"
+      ],
+      "metadata": {
+        "id": "qgJsCa_VHkS8"
+      },
+      "execution_count": 8,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print (dFilter)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "OHGTK5fYLIu7",
+        "outputId": "6a60b0ca-a4f8-438c-a623-c99b3a0d830b"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "              mxene_name  lattice_constant band_gap is_metal  magnetic_moment\n",
+            "95       Cr-Cr-N-Br-Br\\t             3.276   \\t 0.0   \\tTrue           2.8337\n",
+            "96        Cr-Cr-N-Br-H\\t             3.133   \\t 0.0   \\tTrue           5.3371\n",
+            "97      Cr-Cr-N-Br-OCN\\t             3.214   \\t 0.0   \\tTrue           2.8124\n",
+            "98       Cr-Cr-N-Br-OH\\t             3.187   \\t 0.0   \\tTrue           5.8504\n",
+            "99       Cr-Cr-N-Cl-Br\\t             3.239   \\t 0.0   \\tTrue           5.6073\n",
+            "...                  ...               ...      ...      ...              ...\n",
+            "23847   Zr-Zr-N-SCN-PO\\t             3.401   \\t 0.0   \\tTrue           0.0000\n",
+            "23848  Zr-Zr-N-SCN-SCN\\t             3.563   \\t 0.0   \\tTrue          -0.0000\n",
+            "23849   Zr-Cr-N-OCl-Cl\\t             3.236   \\t 0.0   \\tTrue           2.9378\n",
+            "23850     Zr-Hf-N-F-OH\\t             3.344   \\t 0.0   \\tTrue           0.1454\n",
+            "23853    Zr-Nb-N-Br-OH\\t             3.424   \\t 0.0   \\tTrue           0.1071\n",
+            "\n",
+            "[11932 rows x 5 columns]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "dFilter.to_csv('N_MXene_data.csv')"
+      ],
+      "metadata": {
+        "id": "MQAxyHXVLSjI"
+      },
+      "execution_count": 10,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Code to filter ligand as ligand has an alphabet before 'N', I have modified the previous code to obtain ligands."
+      ],
+      "metadata": {
+        "id": "Q-N2oncfRrlr"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import re\n",
+        "\n",
+        "\n",
+        "dFilter2=df.loc[df['mxene_name'].str.contains('[A-Z]*N-', regex=True)]"
+      ],
+      "metadata": {
+        "id": "5DBeFmCrMTd8"
+      },
+      "execution_count": 11,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(dFilter2)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "1dRJOpafMdk7",
+        "outputId": "f915666b-dc63-4599-fe5d-f5d2a15ecff1"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "              mxene_name  lattice_constant band_gap is_metal  magnetic_moment\n",
+            "1        Cr-Cr-C-CN-Br\\t             3.180   \\t 0.0   \\tTrue           3.1953\n",
+            "2        Cr-Cr-C-CN-Cl\\t             3.144   \\t 0.0   \\tTrue           3.2888\n",
+            "3        Cr-Cr-C-CN-CN\\t             3.112   \\t 0.0   \\tTrue           3.3409\n",
+            "4         Cr-Cr-C-CN-F\\t             3.220   \\t 0.0   \\tTrue           5.9863\n",
+            "5         Cr-Cr-C-CN-H\\t             3.061   \\t 0.0   \\tTrue           3.2446\n",
+            "...                  ...               ...      ...      ...              ...\n",
+            "23847   Zr-Zr-N-SCN-PO\\t             3.401   \\t 0.0   \\tTrue           0.0000\n",
+            "23848  Zr-Zr-N-SCN-SCN\\t             3.563   \\t 0.0   \\tTrue          -0.0000\n",
+            "23849   Zr-Cr-N-OCl-Cl\\t             3.236   \\t 0.0   \\tTrue           2.9378\n",
+            "23850     Zr-Hf-N-F-OH\\t             3.344   \\t 0.0   \\tTrue           0.1454\n",
+            "23853    Zr-Nb-N-Br-OH\\t             3.424   \\t 0.0   \\tTrue           0.1071\n",
+            "\n",
+            "[14671 rows x 5 columns]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "dFilter2.to_csv('(Ligand)N_MXene_data.csv')"
+      ],
+      "metadata": {
+        "id": "1rthNzdeOMqs"
+      },
+      "execution_count": 13,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Code to filter 'N' + 'ligand-N' together MXene."
+      ],
+      "metadata": {
+        "id": "EITa_h7DSBWT"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "dFilter3=df.loc[df['mxene_name'].str.contains(\"-N-\" + \"[A-Z]*N-\", regex=True)]"
+      ],
+      "metadata": {
+        "id": "5okk6diEQGpt"
+      },
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(dFilter3)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Ugu4Zd1TQU_e",
+        "outputId": "86ba30de-9425-4040-a292-2ec0d56ee569"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "              mxene_name  lattice_constant band_gap is_metal  magnetic_moment\n",
+            "104      Cr-Cr-N-CN-Br\\t             3.194   \\t 0.0   \\tTrue           5.8498\n",
+            "105      Cr-Cr-N-CN-Cl\\t             3.158   \\t 0.0   \\tTrue           6.0944\n",
+            "106      Cr-Cr-N-CN-CN\\t             3.042   \\t 0.0   \\tTrue           5.6410\n",
+            "107       Cr-Cr-N-CN-F\\t             3.209   \\t 0.0   \\tTrue           6.1232\n",
+            "108       Cr-Cr-N-CN-H\\t             3.068   \\t 0.0   \\tTrue           5.3945\n",
+            "...                  ...               ...      ...      ...              ...\n",
+            "23844    Zr-Zr-N-SCN-O\\t             3.356   \\t 0.0   \\tTrue           0.0000\n",
+            "23845  Zr-Zr-N-SCN-OCN\\t             3.457   \\t 0.0   \\tTrue          -0.0000\n",
+            "23846   Zr-Zr-N-SCN-OH\\t             3.429   \\t 0.0   \\tTrue           0.0000\n",
+            "23847   Zr-Zr-N-SCN-PO\\t             3.401   \\t 0.0   \\tTrue           0.0000\n",
+            "23848  Zr-Zr-N-SCN-SCN\\t             3.563   \\t 0.0   \\tTrue          -0.0000\n",
+            "\n",
+            "[2738 rows x 5 columns]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "dFilter3.to_csv('N+(ligand)N_MXene.csv')"
+      ],
+      "metadata": {
+        "id": "1njn_aBbQiGK"
+      },
+      "execution_count": 16,
+      "outputs": []
+    }
+  ]
+}
